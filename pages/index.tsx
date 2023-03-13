@@ -3,11 +3,14 @@ import Head from "next/head";
 import Header from "@/Components/Header";
 import FormSearch from "@/Components/FormSearch";
 import ProductList from "@/Components/ProductList";
+
 interface HomeProps {
   posts: any[];
 }
 
 export default function Home({ posts }: HomeProps) {
+  // handle Search
+
   return (
     <>
       <Head>
@@ -25,7 +28,7 @@ export default function Home({ posts }: HomeProps) {
     </>
   );
 }
-
+// fetch
 export async function getStaticProps() {
   const authToken = process.env.ACCESS_KEY;
 
@@ -63,4 +66,7 @@ export async function getStaticProps() {
   return {
     props: { posts: data.data.getGenericCatalytics },
   };
+}
+function onSearch(searchTerm: string) {
+  throw new Error("Function not implemented.");
 }
